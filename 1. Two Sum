@@ -1,0 +1,14 @@
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        # Firstly we need to know the length of numbers added.
+        n = len(nums)
+        # To calculate the sum , if need to go through the entire array , hence the for loop.
+        # The i loop will compute the first integer and j loop will keep track of the second integer.
+        # Using(n-1) as the len() function indexes from 0 , so have to subtract 1.
+        for i in range (n-1):
+        # As specfied in the problem , we need to two seprate integer , hence (i+1), otherwise it will reitrate the first integer and compute the sum.
+            for j in range(i+1,n):
+                if nums[i] + nums[j] == target:
+                    return [i,j]
+        # Use case , if no actual sum is possible , return an empty array
+        return[]
