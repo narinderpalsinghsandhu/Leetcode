@@ -1,0 +1,9 @@
+import pandas as pd
+
+def second_highest_salary(employee: pd.DataFrame) -> pd.DataFrame:
+    salaries_df = employee['salary'].drop_duplicates().sort_values(ascending=False)
+    if len(salaries_df) < 2:
+        return pd.DataFrame({'SecondHighestSalary': [None]})
+    second_highest_df = salaries_df.iloc[1]
+    result_df = pd.DataFrame({'SecondHighestSalary': [second_highest_df]})
+    return result_df
