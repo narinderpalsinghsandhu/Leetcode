@@ -1,0 +1,6 @@
+import pandas as pd
+
+def department_highest_salary(employee: pd.DataFrame, department: pd.DataFrame) -> pd.DataFrame:
+    dataframe_df = employee.merge(department, left_on = 'departmentId', right_on = 'id')
+    dataframe_df = dataframe_df.rename(columns = {'name_x': 'Employee', 'name_y': 'Department', 'salary': 'Salary'})[['Department', 'Employee', 'Salary']]
+    return dataframe_df[dataframe_df['Salary'] == dataframe_df.groupby('Department')['Salary'].transform(max)]
