@@ -1,0 +1,4 @@
+class Solution:
+    def uniqueOccurrences(self, A: List[int]) -> bool:
+    	return (lambda x: len(x) == len(set(x)))(collections.Counter(A).values())
+		
