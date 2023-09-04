@@ -1,0 +1,10 @@
+class Solution(object):
+    def hasCycle(self, head):
+        FirstPointer = head
+        SecondPointer = head
+        while FirstPointer is not None and FirstPointer.next is not None:
+            SecondPointer = SecondPointer.next
+            FirstPointer = FirstPointer.next.next
+            if SecondPointer == FirstPointer:
+                return 1
+        return 0    
