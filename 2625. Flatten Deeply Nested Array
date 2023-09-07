@@ -1,0 +1,21 @@
+/**
+ * @param {any[]} arr
+ * @param {number} depth
+ * @return {any[]}
+ */
+var flat = function(arr, depth) {
+  const stack = [...arr.map(unit => [unit, depth])];
+  const solution = [];
+
+  while (stack.length > 0) {
+    const [unit, depth] = stack.pop();
+
+    if (Array.isArray(unit) && depth > 0) {
+      stack.push(...unit.map(subUnit => [subUnit, depth - 1]));
+    } else {
+      solution.push(unit);
+    }
+  }
+
+  return solution.reverse();
+};
