@@ -1,0 +1,14 @@
+/**
+ * @param {Function} fn
+ * @return {Array}
+ */
+Array.prototype.groupBy = function(fn) {
+  return this.reduce((grouped, item) => {
+    const keySol = fn(item);
+    if (!grouped[keySol]) {
+      grouped[keySol] = [];
+    }
+    grouped[keySol].push(item);
+    return grouped;
+  }, {});
+};
