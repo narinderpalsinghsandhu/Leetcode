@@ -1,0 +1,20 @@
+/**
+ * @param {Array} arr1
+ * @param {Array} arr2
+ * @return {Array}
+ */
+var join = function(arr1, arr2) {
+    const solution = {};
+    for (let i = 0; i < arr1.length; i++) {
+        solution[arr1[i].id] = arr1[i];
+    } 
+    for (let i = 0; i < arr2.length; i++) {
+        if (solution[arr2[i].id]) {
+            for (const keySol in arr2[i]) solution[arr2[i].id][keySol] = arr2[i][keySol];  
+        } else {
+            solution[arr2[i].id] = arr2[i];
+        }
+    } 
+
+    return Object.values(solution);
+};
