@@ -1,0 +1,17 @@
+class Solution(object):
+    def generate(self, numRows):
+        result = []
+        for i in range(numRows):
+            if(i == 0):
+                previous = [1]
+                result.append(previous)
+            else:
+                current = [1]
+                j = 1
+                while(j < i):
+                    current.append(previous[j-1] + previous[j])
+                    j+=1
+                current.append(1)
+                result.append(current)
+                previous = current
+        return result       
