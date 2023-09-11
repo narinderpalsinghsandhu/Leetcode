@@ -1,0 +1,8 @@
+class Solution:
+    def plusOne(self, digits):
+        strings = ""
+        for number in digits:
+            strings += str(number)
+        solution = str(int(strings) +1)
+        result = [int(solution[i]) for i in range(len(solution))]
+        return result
