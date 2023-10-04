@@ -1,0 +1,7 @@
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        sol = []
+        while matrix:
+            sol += matrix.pop(0)
+            matrix = (list(zip(*matrix)))[::-1]
+        return sol
