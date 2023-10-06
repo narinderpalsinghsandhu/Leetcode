@@ -1,0 +1,11 @@
+class Solution:
+    def multiply(self, num1: str, num2: str) -> str:
+        result = 0
+        l1 = len(num1)
+        l2 = len(num2)       
+        for i in range(l1):
+            n = 10**i
+            for j in range(l2):
+                result += (ord(num1[l1-1-i])-ord('0'))*(ord(num2[l2-1-j])-ord('0'))*n
+                n *= 10  
+        return str(result)
