@@ -1,0 +1,7 @@
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        def depthfs(root, depth):
+            if not root: return depth
+            return max(depthfs(root.left, depth + 1), depthfs(root.right, depth + 1))
+                       
+        return depthfs(root, 0)
