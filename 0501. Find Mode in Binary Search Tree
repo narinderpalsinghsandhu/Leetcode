@@ -1,0 +1,14 @@
+class Solution:
+    def findMode(self, root: TreeNode) -> list[int]:
+        def dfs(root: TreeNode)-> None:
+            if not root: return
+            i[root.val]+=1
+            dfs(root.left)
+            dfs(root.right)
+            return  
+        i,result = defaultdict(int), []
+        
+        dfs(root)
+        temp = max(i.values())
+
+        return [k for k in i if i[k] == temp]   
