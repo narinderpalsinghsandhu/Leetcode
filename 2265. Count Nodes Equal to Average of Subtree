@@ -1,0 +1,17 @@
+class Solution:
+    def averageOfSubtree(self, root: Optional[TreeNode]) -> int:
+        result=0
+        def dfs(node):
+            nonlocal result
+            if not node:
+                return 0,0
+            leftSum,leftCount=dfs(node.left)
+            rightSum,rightCount=dfs(node.right)
+            Sum=node.val+leftSum+rightSum
+            Count=1+leftCount+rightCount
+            if Sum//Count==node.val:
+                result+=1
+            return Sum,Count
+        
+        dfs(root)
+        return result 
