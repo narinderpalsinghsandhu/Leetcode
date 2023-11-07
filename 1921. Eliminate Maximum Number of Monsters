@@ -1,0 +1,8 @@
+class Solution:
+    def eliminateMaximum(self, dist: List[int], speed: List[int]) -> int:
+        store = [dist[i] / speed[i] for i in range(len(dist))]
+        store.sort()
+        for i in range(len(store)):
+            if store[i] <= i:
+                return i
+        return len(dist)
