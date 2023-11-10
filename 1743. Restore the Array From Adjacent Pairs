@@ -1,0 +1,14 @@
+class Solution:
+    def restoreArray(self, adjacentPairs: List[List[int]]) -> List[int]:
+        k=defaultdict(list)
+        for i,j in adjacentPairs:
+            k[i]+=j,
+            k[j]+=i,
+        
+        head,tail=[l for l in k if len(k[l])==1]
+        previous,current,result=None,head,[head]
+        
+        while current!=tail:
+            result+=[l for l in k[current] if l !=previous]
+            previous,current=current,result[-1]
+        return result
