@@ -1,0 +1,17 @@
+class Solution:
+    def sortVowels(self, input_str: str) -> str:
+        vowelList = []
+        vowelPositions = []
+        
+        for i, j in enumerate(input_str):
+            if j.lower() in {'a', 'e', 'i', 'o', 'u'}:
+                vowelList.append(j)
+                vowelPositions.append(i)
+        
+        vowelList.sort()
+        resultList = list(input_str)
+        
+        for k, l in zip(vowelPositions, vowelList):
+            resultList[k] = l
+        
+        return ''.join(resultList)
