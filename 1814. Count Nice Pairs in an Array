@@ -1,0 +1,5 @@
+class Solution:
+    def countNicePairs(self, nums: List[int]) -> int:
+        MOD = 10**9 + 7
+        cntr = Counter(num - int(str(num)[::-1]) for num in nums)
+        return sum(comb(cnt, 2) for cnt in cntr.values())%MOD
