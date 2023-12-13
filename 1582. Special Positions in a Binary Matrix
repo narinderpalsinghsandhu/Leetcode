@@ -1,0 +1,11 @@
+class Solution:
+    def numSpecial(self, mat: List[List[int]]) -> int:
+        def columnSum(colId):
+            return sum(row[colId] for row in mat)
+
+        result = 0
+        for row in mat:
+            if sum(row) == 1:
+                colId = row.index(1)
+                result += columnSum(colId) == 1
+        return result
