@@ -1,16 +1,18 @@
 class Solution:
     def numDecodings(self, s: str) -> int:
-        return self._rec_helper(s)
-
-    def _rec_helper(self, data):
-        if not data:
-            return 1
-        first_call, second_call = 0, 0
-
-        if 1 <= int(data[:1]) <= 9:
-            first_call = self._rec_helper(data[1:])
-
-        if 10 <= int(data[:2]) <= 26:
-            second_call = self._rec_helper(data[2:])
-
+        n=len(s)
+        dp=[-1]*(n+1)
+        def f(i):
+            if i==n: return 1
+            if dp[i]!= -1: return dp[i]
+            if s[i]=='0':
+                dp[i]=0
+                return 0
+            ans=f(i+1)
+            if (i+1<n and (s[i]=='1' or (s[i]=='2' and s[i+1]<='6'))):
+                ans+=f(i+2)
+            dp[i]=ans
+            return ans
+    
+        return f(0)
         return first_call + second_call
