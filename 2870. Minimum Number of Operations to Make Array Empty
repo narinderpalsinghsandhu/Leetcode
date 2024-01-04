@@ -1,0 +1,9 @@
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        count = 0
+        has = Counter(nums)
+        for i in has:
+            if has[i]==1:
+                return -1
+            count += has[i]//3 + (has[i]%3!=0)
+        return count
