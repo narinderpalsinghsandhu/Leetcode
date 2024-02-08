@@ -1,0 +1,3 @@
+class Solution:
+    def numSquares(self, n: int) -> int:
+        return (f:=cache(lambda k:k and 1+min(f(k-q*q) for q in range(1,isqrt(k)+1))))(n)
