@@ -1,0 +1,7 @@
+class Solution:
+    def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
+        d = {1:[]}
+        for q in sorted(nums):
+            d[q] = max((d[p] for p in d if q%p==0), key=len) + [q]
+        
+        return max(d.values(), key=len)
